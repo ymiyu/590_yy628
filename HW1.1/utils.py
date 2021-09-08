@@ -2,11 +2,8 @@ import json
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-from scipy.optimize import minimize
 import pandas as pd
 from sklearn.model_selection import train_test_split
-import scipy
-from scipy.optimize import least_squares, curve_fit
 
 
 # define measurement
@@ -31,6 +28,9 @@ class Data:
 			self.data = json.load(f)
 			#self.data = pd.DataFrame(json_file)
 		return self.data
+
+	def set_dataframe(self):
+		return self.data = pd.Dataframe(self.data)
 
 	def set_variables(self, x_variable, y_variable):
 		# set X variables and y variable for models

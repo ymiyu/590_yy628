@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import json
 import numpy as np
+from utils import Data
 
 
 # define numpy array normalizer
@@ -16,7 +17,8 @@ def unnormalization(x, u, s):
 
 
 weight_filename = 'weight.json'
-data = json.load(open(weight_filename, 'r'))
+data = Data().load_file(weight_filename)
+#data = json.load(open(weight_filename, 'r'))
 data = [(x, y) for x, y in zip(data['y'], data['is_adult'])]
 x_all = np.array([d[0] for d in data])
 y_all = np.array([d[1] for d in data])
