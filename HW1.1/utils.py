@@ -28,8 +28,8 @@ class Data:
 
 	def load_file(self, filename):
 		with open(filename, 'r') as f:
-			json_file = json.load(f)
-			self.data = pd.DataFrame(json_file)
+			self.data = json.load(f)
+			#self.data = pd.DataFrame(json_file)
 		return self.data
 
 	def set_variables(self, x_variable, y_variable):
@@ -67,67 +67,5 @@ class Data:
 		plt.show()
 
 
-
-# Linear Regression
-# Load data
-data = Data()
-data.load_file("weight.json")
-#print("DATA")
-#print(data.data)
-
-# Slice ages to be less than 18
-data.data = data.data[data.data['x']<18]
-
-# Set predictors and target
-data.set_variables(["x"], "y")
-#print(data.X)
-
-# Split data
-X_train, X_test, y_train, y_test = data.split_data(0.8)
-#print("X_train, y_train")
-#print(X_train, y_train)
-
-# Standardlize data
-X_train = standard_scaler(X_train.to_numpy()).flatten()
-y_train = standard_scaler(y_train.to_numpy())
-X_test = standard_scaler(X_test.to_numpy()).flatten()
-y_test = standard_scaler(y_test.to_numpy())
-
-
-#print(standard_scaler(X_train))
-#data.plot_data(x_axis='x', y_axis='y')
-#print(standard_scaler(y_train))
-
-# Scipy Optimzier Linear Regression
-def fun(x, t, y):
-	return np.mean((x[0]+x[1]*np.exp(x[2]*t)-y)**2)
-
-x0 = np.array([1.0, 1.0, 0.0])
-res_lsq = least_squares(fun, x0, args=(X_train, y_train))
-
-def model(x, p1,p2):
-	return p1+x*p2
-popt, pcov = curve_fit(model, X_train, y_train)
-
-print(popt)
-# Plot
-data = Data()
-data.load_file("weight.json")
-data.set_variables(["x"], "y")
-
-X_train, X_test, y_train, y_test = data.split_data(0.8)
-X_train = X_train.to_numpy().flatten()
-y_train = y_train.to_numpy()
-X_test = X_test.to_numpy().flatten()
-y_test = y_test.to_numpy()
-
-
-
-fig, ax = plt.subplots()
-ax.scatter(X_train, y_train)
-x = np.linspace(0, 18, 100)
-y = popt[0] + popt[1]*x
-plt.plot(x, y)
-plt.show()
 
 
