@@ -30,7 +30,8 @@ class Data:
 		return self.data
 
 	def set_dataframe(self):
-		return self.data = pd.Dataframe(self.data)
+		self.data = pd.Dataframe(self.data)
+		return self.data
 
 	def set_variables(self, x_variable, y_variable):
 		# set X variables and y variable for models
