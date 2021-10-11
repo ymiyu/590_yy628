@@ -51,10 +51,12 @@ epoch=1; epochs=[]; loss_train=[];  loss_val=[]
 data = json.load(open('DATA/planar_x1_x2_y.json', 'r'))
 x1 = data['x1']
 x2 = data['x2']
+x = [x1, x2]
 y = data['y']
 
 #MAKE ROWS=SAMPLE DIMENSION (TRANSPOSE)
-X=np.transpose(np.array([x1, x2]))
+#X=np.transpose(np.array([x1, x2]))
+X = np.transpose(np.array(x))
 Y=np.transpose(np.array([y]))
 print('--------INPUT INFO-----------')
 print("X shape:",X.shape); print("Y shape:",Y.shape,'\n')

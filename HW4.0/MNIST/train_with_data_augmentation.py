@@ -16,11 +16,23 @@ import random
 
 #USER PARAMETERS
 DATASET = 'MNIST'
+save_name = 'MNIST-aug.h5'
 model_type = 'CNN'
-image_shape = (28, 28, 1)
-save_name = 'mnist-aug.h5'
+#image_shape = (28, 28, 1)
 batch_size = 64
 epochs = 5
+old_setting = np.seterr(all='ignore')
+
+
+#-------------------------------------
+#SET INPUT SHAPE
+#-------------------------------------
+if DATASET == 'MNIST':
+	image_shape = (28, 28, 1)
+if DATASET == 'MNIST Fashion':
+	image_shape = (28, 28, 1)
+if DATASET == 'CIFAR-10':
+	image_shape = (32, 32, 3)
 
 
 #-------------------------------------

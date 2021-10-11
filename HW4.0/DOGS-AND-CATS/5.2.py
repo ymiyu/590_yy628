@@ -9,7 +9,7 @@ from keras import optimizers
 from keras.preprocessing.image import ImageDataGenerator
 
 
-base_dir = 'cats_and_dogs_small'
+base_dir = 'dogs_cats_small'
 
 train_dir = os.path.join(base_dir, 'train')
 validation_dir = os.path.join(base_dir, 'validation')
@@ -85,7 +85,7 @@ history = model.fit_generator(train_generator,
 			validation_steps=50)
 
 # Saving the model
-model.save('cats_and_dogs_small_1.h5')
+model.save('dogs_cats_small_1.h5')
 
 # Displaying curves of loss and accuracy during training
 acc = history.history['acc']

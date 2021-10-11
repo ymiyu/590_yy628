@@ -11,7 +11,7 @@ from keras.preprocessing.image import ImageDataGenerator
 
 from tqdm import tqdm
 
-base_dir = 'cats_and_dogs_small'
+base_dir = 'dogs_cats_small'
 
 train_dir = os.path.join(base_dir, 'train')
 validation_dir = os.path.join(base_dir, 'validation')
